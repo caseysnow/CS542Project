@@ -9,23 +9,15 @@ const router = express.Router();
 //   });
 
 router.get('/', async (req, res, next) => {
-    try{
-        let results = await db.all();
-        // res.json(results);
-        
-        res.sendFile('/Users/caseysnow/Desktop/bum/server/views/index.html');
-    }catch(e){
-        console.log(e);
-        res.sendStatus(500)
-    }
+    res.sendFile('server/views/index.html', {root: '.'});
 });
 
 router.get('/cart/', async (req, res, next) => {
-    res.sendFile('/Users/caseysnow/Desktop/bum/server/views/cart.html');
+    res.sendFile('server/views/cart.html', {root: '.'});
 });
 
 router.get('/product', async (req, res, next) => {
-    res.sendFile('/Users/caseysnow/Desktop/bum/server/views/product.html');
+    res.sendFile('server/views/product.html', {root: '.'});
 });
 
 router.get('/product/:product_id', async (req, res, next) => {

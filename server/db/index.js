@@ -1,9 +1,9 @@
 const mysql = require('mysql')
 
 const pool = mysql.createPool({
-    user: 'root',
+    user: 'admin',
     password:'password',
-    host: 'localhost',
+    host: 'cs542.c6tpbldt3a1p.us-east-1.rds.amazonaws.com',
     database: 'ApplianceStore'
 });
 
