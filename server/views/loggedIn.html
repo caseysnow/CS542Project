@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Results</title>
+    <title>Home Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/views/results.js"></script>
+    <script src="/views/user.js"></script>
+    <script src="/views/products.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 </head>
@@ -30,25 +31,8 @@
         </div>
     </div>
     <div class="login_prompt_section">
-        <div class="topbar__otheroptions">
-            <p style="display: inline-block;" class="topbar__other-option">Search Results for </p>
-            <p style="display: inline-block;" id="searchKeyword" class="topbar__other-option"> </p>
-        </div>
-        <div class="container">
-            
-                <table id="resTable">
-                    <tr>
-                      <th>Product ID</th>
-                      <th>Cart ID</th>
-                      <th>Price</th>
-                      <th>Title</th>
-                      <th>Category</th>
-                      <th>Description</th>
-                    </tr>
-                  </table>
-                       
-        </div>
         <div class="top_choices">
+            <h1 class="top_choices-title" id="welcomeMat"></h1>
             <h1 class="top_choices-title">Check Out Our Most Popular Appliances</h1>
             <div class="item-grid">
                 <figure>
@@ -57,7 +41,7 @@
                 </figure>
                 <figure>
                     <img src="/views/pictures/appliance2.jpg" alt="" class="grid-item">
-                    <a style="text-align: center;" href="product">Appliance 2</a>
+                    <figcaption style="text-align: center;">Appliance 2</figcaption>
                 </figure>
                 <figure>
                     <img src="/views/pictures/appliance3.jpg" alt="" class="grid-item">

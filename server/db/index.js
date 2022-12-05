@@ -21,9 +21,33 @@ store.all = () => {
     });
 };
 
-store.user = (username) => {
+// store.user = (username) => {
+//     return new Promise((resolve, reject) => {
+//         pool.query('SELECT * FROM User WHERE username = ?', [username], (err, results) => {
+//             if(err){
+//                 return reject(err);
+//             }
+//             return resolve(results[0]);
+
+//         });
+//     });
+// };
+
+store.getUsername = (username) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM User WHERE username = ?', [username], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+
+        });
+    });
+};
+
+store.login = (username, password) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT * FROM User WHERE username = ? and password = ?', [username, password], (err, results) => {
             if(err){
                 return reject(err);
             }

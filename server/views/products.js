@@ -1,12 +1,12 @@
 $(document).ready(function () {
-    $.ajax({
-        method:'GET',
-        url:'http://127.0.0.1:3000/product/987600',
-        success:function(response){
-            console.log(response);
-            integrate(response);
-        }
-    });
+    // $.ajax({
+    //     method:'GET',
+    //     url:'http://127.0.0.1:3000/product/987600',
+    //     success:function(response){
+    //         console.log(response);
+    //         integrate(response);
+    //     }
+    // });
     
     function integrate(data){
         var element = document.getElementById('cartData');
@@ -26,5 +26,12 @@ $(document).ready(function () {
         });
 
     }
+
+    var figures = document.querySelectorAll('figure')
+    for (let figure of figures) {
+    figure.addEventListener("click", function() {
+    console.log("hello");
+  })
+}
   });
 
