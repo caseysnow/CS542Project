@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/views/results.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+<body>
+    <div class="topbar__container">
+        <div class="test-container">
+            <div class="topbar__titles-container">
+                <div class="topbar__title">ApplianceMart</div>
+                <div class="topbar__subtitle">Shop Us Last</div>
+            </div>
+        </div>
+        <div class="topbar__search-bar-container">
+            <form action="/results" href="results">
+                <input type="text" name="searchInput" id="searchInput" placeholder="Search for Appliances">
+            </form>
+        </div>
+        <div class="topbar__otheroptions">
+            <a style="display: inline-block;" class="topbar__other-option" href="/cart">View Cart</a>
+            <div>.</div>
+            <div style="display: inline-block;" class="topbar__other-option">User Settings</div>
+        </div>
+    </div>
+    <div class="login_prompt_section">
+        <div class="topbar__otheroptions">
+            <p style="display: inline-block;" class="topbar__other-option">Search Results for </p>
+            <p style="display: inline-block;" id="searchKeyword" class="topbar__other-option"> </p>
+        </div>
+        <div class="container">
+            
+                <table id="resTable">
+                    <tr>
+                      <th>Product ID</th>
+                      <th>Cart ID</th>
+                      <th>Price</th>
+                      <th>Title</th>
+                      <th>Category</th>
+                      <th>Description</th>
+                    </tr>
+                  </table>
+                       
+        </div>
+        <div class="top_choices">
+            <h1 class="top_choices-title">Check Out Our Most Popular Appliances</h1>
+            <div class="item-grid">
+                <figure>
+                    <img src="/views/pictures/appliance1.jpg" alt="" class="grid-item">
+                    <figcaption style="text-align: center;">Appliance 1</figcaption>
+                </figure>
+                <figure>
+                    <img src="/views/pictures/appliance2.jpg" alt="" class="grid-item">
+                    <a style="text-align: center;" href="product">Appliance 2</a>
+                </figure>
+                <figure>
+                    <img src="/views/pictures/appliance3.jpg" alt="" class="grid-item">
+                    <figcaption style="text-align: center;">Appliance 3</figcaption>
+                </figure>
+                <figure>
+                    <img src="/views/pictures/appliance4.jpg" alt="" class="grid-item">
+                    <figcaption style="text-align: center;">Appliance 4</figcaption>
+                </figure>
+                <figure>
+                    <img src="/views/pictures/appliance5.jpg" alt="" class="grid-item">
+                    <figcaption style="text-align: center;">Appliance 5</figcaption>
+                </figure>
+                <figure>
+                    <img src="/views/pictures/appliance6.jpg" alt="" class="grid-item">
+                    <figcaption style="text-align: center;">Appliance 6</figcaption>
+                </figure>
+                <figure>
+                    <img src="/views/pictures/appliance7.jpg" alt="" class="grid-item">
+                    <figcaption style="text-align: center;">Appliance 7</figcaption>
+                </figure>
+                <figure>
+                    <img src="/views/pictures/appliance8.jpg" alt="" class="grid-item">
+                    <figcaption style="text-align: center;">Appliance 8</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

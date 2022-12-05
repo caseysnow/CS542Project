@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+<body>
+    <div class="topbar__container">
+        <div class="test-container">
+            <div class="topbar__titles-container">
+                <div class="topbar__title">ApplianceMart</div>
+                <div class="topbar__subtitle">Shop Us Last</div>
+            </div>
+        </div>
+        <div class="topbar__search-bar-container">
+            <form action="/results" href="results">
+                <input type="text" name="searchInput" id="searchInput" placeholder="Search for Appliances">
+            </form>
+        </div>
+        <div class="topbar__otheroptions">
+            <a style="display: inline-block;" class="topbar__other-option" href="/cart">View Cart</a>
+            <div>.</div>
+            <div style="display: inline-block;" class="topbar__other-option">User Settings</div>
+        </div>
+    </div>
+    <div class="login_prompt_section">
+
+        <div class="container">
+            <figure>
+                <img src="/views/pictures/appliance1.jpg" alt="" class="grid-item">
+                <!-- <figcaption style="text-align: center;">Appliance 2</figcaption> -->
+            </figure>
+
+            <button onclick="addFavorite('product1')">Favorite</button>
+            
+        </div>
+    </div>
+</body>
+</html>
