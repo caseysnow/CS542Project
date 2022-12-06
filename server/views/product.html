@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/views/favorites.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
+    <script src="/views/products.js"></script>
+    <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 </head>
 <body>
@@ -29,14 +29,18 @@
             <div style="display: inline-block;" class="topbar__other-option">User Settings</div>
         </div>
     </div>
-    <div class="login_prompt_section">
-
-        <div class="container">
-            <figure>
-                <!-- <img src="/views/pictures/appliance1.jpg" alt="" class="grid-item"> -->
-                <!-- <figcaption style="text-align: center;">Appliance 2</figcaption> -->
-            </figure>
-
+    <div id="product-container">
+        <div class="product-grid-information">
+            <div class="product-left-grid"></div>
+                <div id="product-title"></div>
+                <div id="product-description"></div>
+            <div class="product-right-grid">
+                <div id="product-price"></div>
+                <div id="product-favorited"></div>
+                <div id="product-star"></div>
+            </div>
+        </div>
+        <div class="product-bottom-container">
             <button onclick="addFavorite()">Favorite</button>
             <button onclick="writeReview()">Leave a Review</button>
         </div>

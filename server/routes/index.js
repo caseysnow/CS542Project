@@ -20,10 +20,11 @@ router.get('/product', async (req, res, next) => {
     res.sendFile('server/views/product.html', {root: '.'});
 });
 
-router.get('/product/:product_id', async (req, res, next) => {
+router.get('/productquery/', async (req, res, next) => {
     let results;
     try{
-        results = await db.product(req.params.product_id);
+        results = await db.product(req.query.id);
+        // res.sendFile('server/views/product.html', {root: '.'});
         res.json(results);
     }catch(e){
         console.log(e);
@@ -45,12 +46,10 @@ router.get('/cart/:username', async (req, res, next) => {
 });
 
 router.get('/results', async (req, res, next) => {
-    
     res.sendFile('server/views/results.html', {root: '.'});
 });
 
 router.get('/searchRes', async (req, res, next) => {
-    
     console.log(req.query.searchInput);
     let results;
     try{

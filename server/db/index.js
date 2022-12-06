@@ -83,7 +83,7 @@ store.product = (productID) => {
 
 store.productByCat = (category) => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT price, title, category FROM products_view WHERE category LIKE ?', ['%' + category + '%'], (err, results) => {
+        pool.query('SELECT product_id, price, title, category FROM products_view WHERE category LIKE ?', ['%' + category + '%'], (err, results) => {
             if(err){
                 return reject(err);
             }
