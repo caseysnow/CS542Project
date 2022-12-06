@@ -21,22 +21,4 @@ $(document).ready(function () {
         product_price.innerHTML = data.price;
         product_title.innerHTML = data.title;
     }
-    // function addRowHandlers() {
-    //     var table = document.getElementById("resTable");
-    //     var rows = table.getElementsByTagName("tr");
-    //     for (i = 0; i < rows.length; i++) {
-    //       var currentRow = table.rows[i];
-    //       var createClickHandler = function(row) {
-    //         return function() {
-    //           var cell = row.getElementsByTagName("td")[3];
-    //           var id = cell.innerHTML;
-    //           alert("id:" + id); //make this go to product page
-
-    //           location.href = "/product/" + id
-
-    //         };
-    //       };
-    //       currentRow.onclick = createClickHandler(currentRow);
-    //     }
-    //   }
   });

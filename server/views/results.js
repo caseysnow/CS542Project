@@ -35,9 +35,8 @@ $(document).ready(function () {
             return function() {
               var cell = row.getElementsByTagName("td")[3];
               var id = cell.innerHTML;
-              alert("id:" + id); //make this go to product page
 
-              location.href = "/product/?id=" + id
+              location.href = "/product/?id=" + id;
 
             };
           };
