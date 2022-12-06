@@ -1,37 +1,42 @@
 $(document).ready(function () {
-    // $.ajax({
-    //     method:'GET',
-    //     url:'http://127.0.0.1:3000/product/987600',
-    //     success:function(response){
-    //         console.log(response);
-    //         integrate(response);
-    //     }
-    // });
+    const queryString = window.location.search;
+    $.ajax({
+        method:'GET',
+        url:'http://127.0.0.1:3000/productquery/' + queryString,
+        success:function(response){
+            integrate(response);
+        }
+    });
     
     function integrate(data){
-        var element = document.getElementById('cartData');
-        console.log(data);
-        element.innerHTML = data.username + '\'s cart';
+        var product_title = document.getElementById('product-title');
+        var product_description = document.getElementById('product-description');
+        var product_price = document.getElementById('product-price');
+        var product_favorited = document.getElementById('product-favorited')
+        var product_star = document.getElementById('product-star')
+    
+        product_star.innerHTML = data.avg_star;
+        product_description.innerHTML = data.description;
+        product_favorited.innerHTML = data.favorite;
+        product_price.innerHTML = data.price;
+        product_title.innerHTML = data.title;
     }
+    // function addRowHandlers() {
+    //     var table = document.getElementById("resTable");
+    //     var rows = table.getElementsByTagName("tr");
+    //     for (i = 0; i < rows.length; i++) {
+    //       var currentRow = table.rows[i];
+    //       var createClickHandler = function(row) {
+    //         return function() {
+    //           var cell = row.getElementsByTagName("td")[3];
+    //           var id = cell.innerHTML;
+    //           alert("id:" + id); //make this go to product page
 
-    function addFavorite(pID){
-        //get user and add product id to favorites
-        $.ajax({
-            method:'POST',
-            url:'http://127.0.0.1:3000/user/' + pID,
-            success:function(response){
-                console.log(response);
+    //           location.href = "/product/" + id
 
-            }
-        });
-
-    }
-
-    var figures = document.querySelectorAll('figure')
-    for (let figure of figures) {
-    figure.addEventListener("click", function() {
-    console.log("hello");
-  })
-}
+    //         };
+    //       };
+    //       currentRow.onclick = createClickHandler(currentRow);
+    //     }
+    //   }
   });
-

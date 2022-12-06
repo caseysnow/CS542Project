@@ -116,3 +116,20 @@ padding-top: 16px;
   height: 350px;
 }
 
+#resTable, tr, td {
+  border: 10px solid gray;
+  font-family: sans-serif;
+  margin: 50px;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.result-container {
+  text-align: center;
+}
+
+td:nth-of-type(4) {
+  display: none;
+}
+
+

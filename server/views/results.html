@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="topbar__search-bar-container">
-            <form action="/results" href="results">
+            <form action="/results">
                 <input type="text" name="searchInput" id="searchInput" placeholder="Search for Appliances">
             </form>
         </div>
@@ -29,58 +29,18 @@
             <div style="display: inline-block;" class="topbar__other-option">User Settings</div>
         </div>
     </div>
-    <div class="login_prompt_section">
-        <div class="topbar__otheroptions">
-            <p style="display: inline-block;" class="topbar__other-option">Search Results for </p>
-            <p style="display: inline-block;" id="searchKeyword" class="topbar__other-option"> </p>
+    <div class="result-container">
+        <div class="result-title-container">
+            <h1>Search Results</h1>
         </div>
         <div class="container">
-            
-                <table id="resTable">
-                    <tr>
-                      <th>Price</th>
-                      <th>Title</th>
-                      <th>Category</th>
-                    </tr>
-                  </table>
-                       
-        </div>
-        <div class="top_choices">
-            <h1 class="top_choices-title">Check Out Our Most Popular Appliances</h1>
-            <div class="item-grid">
-                <figure>
-                    <img src="/views/pictures/appliance1.jpg" alt="" class="grid-item">
-                    <figcaption style="text-align: center;">Appliance 1</figcaption>
-                </figure>
-                <figure>
-                    <img src="/views/pictures/appliance2.jpg" alt="" class="grid-item">
-                    <a style="text-align: center;" href="product">Appliance 2</a>
-                </figure>
-                <figure>
-                    <img src="/views/pictures/appliance3.jpg" alt="" class="grid-item">
-                    <figcaption style="text-align: center;">Appliance 3</figcaption>
-                </figure>
-                <figure>
-                    <img src="/views/pictures/appliance4.jpg" alt="" class="grid-item">
-                    <figcaption style="text-align: center;">Appliance 4</figcaption>
-                </figure>
-                <figure>
-                    <img src="/views/pictures/appliance5.jpg" alt="" class="grid-item">
-                    <figcaption style="text-align: center;">Appliance 5</figcaption>
-                </figure>
-                <figure>
-                    <img src="/views/pictures/appliance6.jpg" alt="" class="grid-item">
-                    <figcaption style="text-align: center;">Appliance 6</figcaption>
-                </figure>
-                <figure>
-                    <img src="/views/pictures/appliance7.jpg" alt="" class="grid-item">
-                    <figcaption style="text-align: center;">Appliance 7</figcaption>
-                </figure>
-                <figure>
-                    <img src="/views/pictures/appliance8.jpg" alt="" class="grid-item">
-                    <figcaption style="text-align: center;">Appliance 8</figcaption>
-                </figure>
-            </div>
+            <table id="resTable">
+                <tr>
+                    <th>Price</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                </tr>
+            </table>      
         </div>
     </div>
 </body>
