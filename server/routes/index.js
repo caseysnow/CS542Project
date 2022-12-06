@@ -20,16 +20,46 @@ router.get('/product', async (req, res, next) => {
     res.sendFile('server/views/product.html', {root: '.'});
 });
 
-router.get('/productquery/', async (req, res, next) => {
+router.get('/userSettings', async (req, res, next) => {
+    res.sendFile('server/views/userSettings.html', {root: '.'});
+});
+
+router.get('/userFavorites/:username', async (req, res, next) => {
     let results;
     try{
-        results = await db.product(req.query.id);
-        // res.sendFile('server/views/product.html', {root: '.'});
+        results = await db.favoritesList(req.params.username);
         res.json(results);
     }catch(e){
         console.log(e);
         res.sendStatus(500);
     }
+});
+
+router.get('/userReviews/:username', async (req, res, next) => {
+    let results;
+    try{
+        results = await db.reviewsList(req.params.username);
+        res.json(results);
+    }catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get('/productquery/', async (req, res, next) => {
+    let results;
+    try{
+        results = await db.product(req.query.id);
+        // res.sendFile('server/views/product.html', {root: '.'});
+        res.json(results);
+    }catch(e){
+        console.log(e);
+    res.sendStatus(500);
+}
+});
+
+router.get('/newUser', async (req, res, next) => {
+    res.sendFile('server/views/newUser.html', {root: '.'});
 });
 
 // router.get('/product/:product_id', async (req, res, next) => {
@@ -77,6 +107,18 @@ router.get('/results', async (req, res, next) => {
     res.sendFile('server/views/results.html', {root: '.'});
 });
 
+router.post('/favoriteAdded', async (req, res, next) => {
+    let results;
+    console.log("in here");
+    try{
+        results = await db.addFavorite(req.query.username, req.query.id);
+        res.json(results);
+    }catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
 router.get('/searchRes', async (req, res, next) => {
     console.log(req.query.searchInput);
     let results;
@@ -108,37 +150,32 @@ router.get('/loggedIn', async (req, res, next) => {
 
 router.get('/pleaseWork', async (req, res, next) => {
     
-    // console.log(req.query.uname);
-    // console.log(req.query.psw);
-    // console.log(req.query.admin);
-    // console.log(req.query.addr);
+    console.log(req.query.uname);
+    console.log(req.query.psw);
+    console.log(req.query.admin);
+    console.log(req.query.addr);
 
     let results;
-
-    try{
-        results = await db.getUsername(req.query.uname);
-        console.log(results);
-        // res.json(results);
+    if(req.query.addr == null){
         try{
-            if(req.query.addr == null){
-                results = await db.login(req.query.uname, req.query.psw);
-                res.json(results);
-            }
-            else{
-                results = await db.addUser(req.query.uname, req.query.psw, req.query.admin, req.query.addr);
-                res.json(results);
-                console.log(results);
-            }
-            // console.log(results);
-            // user.displayUser(results);
-        }catch(e){
+            results = await db.login(req.query.uname, req.query.psw);
+            res.json(results);
+        }
+        catch(e){
+            console.log(e);
             console.log(e.sqlMessage);
             res.send(e);
-
         }
-    }catch(e){
-        console.log(e);
-        //should make this cannot find username
+    }
+    else{
+        try{
+            results = await db.addUser(req.query.uname, req.query.psw, req.query.admin, req.query.addr);
+            res.json(results);
+            console.log('user added');
+            // console.log(results);
+        }catch(e){
+            console.log(e);
+        }
     }
 });
 

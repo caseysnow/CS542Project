@@ -52,4 +52,9 @@ $(document).ready(function () {
         // product_review_description.innerHTML = data.description;
         // product_review_stars.innerHTML = data.num_stars; 
     }
+
+    // function addFavorite(){
+    //     console.log("favorite");
+    // }
+
   });
