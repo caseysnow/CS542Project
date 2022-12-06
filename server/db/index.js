@@ -152,5 +152,16 @@ store.reviewsList = (username) => {
     });
 };
 
+store.customerReview = (productID) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT num_stars, description FROM CustomerReview WHERE product_id = ?', [productID], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
+
 
 module.exports = store;

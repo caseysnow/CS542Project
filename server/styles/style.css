@@ -132,4 +132,17 @@ td:nth-of-type(4) {
   display: none;
 }
 
+.product-grid-information {
+  display: grid;
+  grid-template-columns: minmax(auto, 1400px) auto;
+  font-size: 22px;
+}
+
+.product-left-grid {
+  padding: 20px;
+}
+.product-right-grid {
+  padding: 20px;
+}
+
 
