@@ -46,7 +46,7 @@ router.get('/cart/:username', async (req, res, next) => {
 
 router.get('/results', async (req, res, next) => {
     
-    res.sendFile('/Users/caseysnow/Desktop/bum/server/views/results.html');
+    res.sendFile('server/views/results.html', {root: '.'});
 });
 
 router.get('/searchRes', async (req, res, next) => {
@@ -63,7 +63,7 @@ router.get('/searchRes', async (req, res, next) => {
 });
 
 router.get('/loggedIn', async (req, res, next) => {
-    res.sendFile('/Users/caseysnow/Desktop/bum/server/views/loggedIn.html');
+    res.sendFile('server/views/loggedIn.html', {root: '.'});
 });
 
 router.get('/pleaseWork', async (req, res, next) => {
@@ -78,7 +78,6 @@ router.get('/pleaseWork', async (req, res, next) => {
             results = await db.login(req.query.uname, req.query.psw);
             res.json(results);
             // console.log(results);
-            // res.sendFile('/Users/caseysnow/Desktop/bum/server/views/loggedIn.html');
             // user.displayUser(results);
         }catch(e){
             console.log(e);
