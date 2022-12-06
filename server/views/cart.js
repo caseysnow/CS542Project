@@ -14,16 +14,16 @@ document.querySelector(".logout").addEventListener("click", (e) => {
         }
     });
 
-    async function isLoggedIn () {
-        const token = store.get('token')
-        if (!token) return false
-      }
+    // async function isLoggedIn () {
+    //     const token = store.get('token')
+    //     if (!token) return false
+    //   }
 
-      async function autoRedirect () {
-        const validLogin = await isLoggedIn()
-        if (!validLogin && location.pathname !== '/login/') redirect('/login')
-        if (validLogin && location.pathname === '/login/') redirect('/')
-      }
+    //   async function autoRedirect () {
+    //     const validLogin = await isLoggedIn()
+    //     if (!validLogin && location.pathname !== '/login/') redirect('/login')
+    //     if (validLogin && location.pathname === '/login/') redirect('/')
+    //   }
     
     function integrate(data){
         var element = document.getElementById('cartData');
