@@ -86,10 +86,6 @@ router.get('/reviewquery/', async (req, res, next) => {
     }
 });
 
-router.get('/newUser', async (req, res, next) => {
-    res.sendFile('server/views/newUser.html', {root: '.'});
-});
-
 
 router.get('/cart/:username', async (req, res, next) => {
     
@@ -112,7 +108,20 @@ router.post('/favoriteAdded', async (req, res, next) => {
     console.log("in here");
     try{
         results = await db.addFavorite(req.query.username, req.query.id);
-        res.json(results);
+        res.send(results);
+    }catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.post('/addToCart', async (req, res, next) => {
+    let results;
+    console.log("in here");
+    console.log(req.query.id)
+    try{
+        results = await db.addToCart(req.query.username, req.query.id);
+        res.send(results);
     }catch(e){
         console.log(e);
         res.sendStatus(500);
@@ -131,7 +140,7 @@ router.get('/searchRes', async (req, res, next) => {
     }
 });
 
-router.get('/newCart/:username', async (req, res, next) => {
+router.post('/newCart/:username', async (req, res, next) => {
     
     // console.log(req.query.searchInput);
     let results;
@@ -148,7 +157,7 @@ router.get('/loggedIn', async (req, res, next) => {
     res.sendFile('server/views/loggedIn.html', {root: '.'});
 });
 
-router.get('/pleaseWork', async (req, res, next) => {
+router.post('/pleaseWork', async (req, res, next) => {
     
     console.log(req.query.uname);
     console.log(req.query.psw);
@@ -170,7 +179,8 @@ router.get('/pleaseWork', async (req, res, next) => {
     else{
         try{
             results = await db.addUser(req.query.uname, req.query.psw, req.query.admin, req.query.addr);
-            res.json(results);
+            // res.json(results);
+            res.send(results);
             console.log('user added');
             // console.log(results);
         }catch(e){

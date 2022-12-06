@@ -1,7 +1,7 @@
 $(document).ready(function () {
   const queryString = window.location.search;
   $.ajax({
-      method:'GET',
+      method:'POST',
       url:'http://127.0.0.1:3000/pleaseWork/' + queryString,
       success:function(response){
           console.log(" successfull response ");
@@ -27,7 +27,7 @@ $(document).ready(function () {
   }
   function addCart(username){
     $.ajax({
-      method:'GET',
+      method:'POST',
       url:'http://127.0.0.1:3000/newCart/' + username,
       success:function(response){      
         console.log('cartAdded'); 

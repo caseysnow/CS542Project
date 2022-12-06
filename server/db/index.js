@@ -128,6 +128,17 @@ store.addFavorite = (username, productID) => {
     });
 };
 
+store.addToCart = (username, productID) => {
+    return new Promise((resolve, reject) => {
+        pool.query('INSERT INTO Cart (username, item) VALUES(?, ?)', [username, productID], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+
 store.favoritesList = (username) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT title FROM Product WHERE product_id IN (SELECT product_id from Favorite where username = ?)', [username], (err, results) => {
