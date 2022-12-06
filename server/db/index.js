@@ -57,9 +57,34 @@ store.login = (username, password) => {
     });
 };
 
+store.addUser = (username, password, admin, address) => {
+    return new Promise((resolve, reject) => {
+        pool.query('INSERT INTO User (username, password, isAdmin, address) VALUES(?, ?, ?, ?)', [username, password, parseInt(admin), address], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+
+        });
+    });
+};
+
 store.cart = (username) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM Cart WHERE username = ?', [username], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+
+        });
+    });
+};
+
+store.createCart = (username) => {
+    return new Promise((resolve, reject) => {
+        const cart_id = Math.floor(random()*20000);
+        pool.query('INSERT INTO Cart (cart_id, username) VALUES(?, ?)', [username, cart_id], (err, results) => {
             if(err){
                 return reject(err);
             }
