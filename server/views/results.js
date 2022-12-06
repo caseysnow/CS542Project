@@ -15,18 +15,12 @@ $(document).ready(function () {
             // console.log(data[i]);
             // console.log(data[i].price)
             var row = table.insertRow(i+1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            var cell6 = row.insertCell(5);
-            cell1.innerHTML = data[i].product_id;
-            cell2.innerHTML = data[i].cart_id;
+            var cell3 = row.insertCell(0);
+            var cell4 = row.insertCell(1);
+            var cell5 = row.insertCell(2);
             cell3.innerHTML = data[i].price;
             cell4.innerHTML = data[i].title;
             cell5.innerHTML = data[i].category;
-            cell6.innerHTML = data[i].description;
         }
         addRowHandlers();
     }
