@@ -28,6 +28,7 @@ $(document).ready(function () {
             document.getElementById("reviewSection").appendChild(input);
             const submitButton = document.createElement("button");
             submitButton.setAttribute('id', 'submitButton');
+            submitButton.innerHTML = "Submit Review Here!"
             document.getElementById("reviewSection").appendChild(submitButton);
             document.getElementById("submitButton").addEventListener("click", (e) => {
                 const queryString = window.location.search;
