@@ -47,14 +47,6 @@ $(document).ready(function () {
                 cell2.innerHTML = data[i].description;
             }
         }
-        // var product_review_description = document.getElementById('product-review-description');
-        // var product_review_stars = document.getElementById('product-review-stars');
-        // product_review_description.innerHTML = data.description;
-        // product_review_stars.innerHTML = data.num_stars; 
     }
-
-    // function addFavorite(){
-    //     console.log("favorite");
-    // }
 
   });
