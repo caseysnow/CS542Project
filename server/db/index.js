@@ -47,8 +47,7 @@ store.login = (username, password) => {
 
 store.addUser = (username, password, admin, address) => {
     return new Promise((resolve, reject) => {
-        const cart_id = Math.floor(Math.random()*20000);
-        pool.query('INSERT INTO User (username, password, isAdmin, address, cart_id) VALUES(?, ?, ?, ?, ?)', [username, password, parseInt(admin), address, cart_id], (err, results) => {
+        pool.query('INSERT INTO User (username, password, isAdmin, address) VALUES(?, ?, ?, ?)', [username, password, parseInt(admin), address], (err, results) => {
             if(err){
                 return reject(err);
             }
@@ -60,28 +59,28 @@ store.addUser = (username, password, admin, address) => {
 
 store.cart = (username) => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM cart_view WHERE username = ?', [username], (err, results) => {
+        pool.query('SELECT * FROM Cart WHERE username = ?', [username], (err, results) => {
             if(err){
                 return reject(err);
             }
-            return resolve(results);
+            return resolve(results[0]);
 
         });
     });
 };
 
-// store.createCart = (username) => {
-//     return new Promise((resolve, reject) => {
-        
-//         pool.query('INSERT INTO Cart (cart_id, username) VALUES(?, ?)', [username, cart_id], (err, results) => {
-//             if(err){
-//                 return reject(err);
-//             }
-//             return resolve(results[0]);
+store.createCart = (username) => {
+    return new Promise((resolve, reject) => {
+        const cart_id = Math.floor(Math.random()*20000);
+        pool.query('INSERT INTO Cart (cart_id, username) VALUES(?, ?)', [username, cart_id], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
 
-//         });
-//     });
-// };
+        });
+    });
+};
 
 store.product = (productID) => {
     return new Promise((resolve, reject) => {
@@ -141,9 +140,9 @@ store.addReview = (username, productID, numStars, review) => {
     });
 };
 
-store.addToCart = (username, quantity, productID) => {
+store.addToCart = (username, productID) => {
     return new Promise((resolve, reject) => {
-        pool.query('INSERT INTO Cart (username, quantity, item) VALUES(?, ?, ?)', [username, quantity, productID], (err, results) => {
+        pool.query('INSERT INTO Cart (username, item) VALUES(?, ?)', [username, productID], (err, results) => {
             if(err){
                 return reject(err);
             }
@@ -166,7 +165,7 @@ store.favoritesList = (username) => {
 
 store.reviewsList = (username) => {
     return new Promise((resolve, reject) => {
-        pool.query('SELECT num_stars, description, title FROM reviews_view WHERE username = ?', [username], (err, results) => {
+        pool.query('SELECT title FROM Product WHERE product_id IN (SELECT product_id FROM CustomerReview WHERE username = ?)', [username], (err, results) => {
             if(err){
                 return reject(err);
             }
@@ -176,16 +175,17 @@ store.reviewsList = (username) => {
     });
 };
 
-// store.customerReview = (productID) => {
-//     return new Promise((resolve, reject) => {
-//         pool.query('SELECT num_stars, description FROM CustomerReview WHERE product_id = ?', [productID], (err, results) => {
-//             if(err){
-//                 return reject(err);
-//             }
-//             return resolve(results);
-//         });
-//     });
-// };
+
+store.customerReview = (productID) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT num_stars, description FROM CustomerReview WHERE product_id = ?', [productID], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results);
+        });
+    });
+};
 
 
 module.exports = store;
