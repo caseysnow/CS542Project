@@ -46,6 +46,8 @@ store.login = (username, password) => {
 };
 
 store.addUser = (username, password, admin, address) => {
+    console.log("admin is ");
+    console.log(admin);
     return new Promise((resolve, reject) => {
         const cart_id = Math.floor(Math.random()*20000);
         pool.query('INSERT INTO User (username, password, isAdmin, address, cart_id) VALUES(?, ?, ?, ?, ?)', [username, password, parseInt(admin), address, cart_id], (err, results) => {
@@ -188,17 +190,6 @@ store.reviewsList = (username) => {
         });
     });
 };
-
-// store.customerReview = (productID) => {
-//     return new Promise((resolve, reject) => {
-//         pool.query('SELECT num_stars, description FROM CustomerReview WHERE product_id = ?', [productID], (err, results) => {
-//             if(err){
-//                 return reject(err);
-//             }
-//             return resolve(results);
-//         });
-//     });
-// };
 
 
 module.exports = store;

@@ -7,6 +7,7 @@
     <title>Home Page</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/views/products.js"></script>
+    <script src="/views/newUser.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 </head>
@@ -26,11 +27,11 @@
         <div class="topbar__otheroptions">
             <a style="display: inline-block;" class="topbar__other-option" href="/cart">View Cart</a>
             <div>.</div>
-            <div style="display: inline-block;" class="topbar__other-option">User Settings</div>
+            <div style="display: inline-block;" class="topbar__other-option" href="userSettings">User Settings</div>
         </div>
     </div>
     <div class="login_prompt_section">
-        <form action="/" href="/" class="login__form">
+        <form action="/newUser" class="login__form">
 
         <div class="container">
             <label class="login_prompts" for="uname"><b>Username</b></label>

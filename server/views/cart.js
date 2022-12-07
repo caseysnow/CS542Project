@@ -6,9 +6,6 @@ $(document).ready(function () {
     const username = localStorage.getItem("username");
     console.log(username);
 
-// document.querySelector(".logout").addEventListener("click", (e) => {
-//     auth.logOut();
-// });
     $.ajax({
         method:'GET',
         url:'http://127.0.0.1:3000/cart/' + username,
@@ -51,8 +48,8 @@ $(document).ready(function () {
               var cell = row.getElementsByTagName("td")[2];
               var id = cell.innerHTML;
               $.ajax({
-                method:'DELETE',
-                url:'http://127.0.0.1:3000/deleteFromCart/' + "?username=" +username + "&product_id="+id,
+                method:'POST',
+                url:'http://127.0.0.1:3000/deleteFromCart/' + "?username=" +username + "&product_id=" + id,
                 success:function(response){
                     console.log(response);
                     alert("Item removed from cart");

@@ -140,12 +140,12 @@ router.post('/addToCart', async (req, res, next) => {
     }
 });
 
-router.delete('/deleteFromCart', async (req, res, next) => {
+router.post('/deleteFromCart', async (req, res, next) => {
     let results;
     console.log(req.query.id)
     try{
         results = await db.removeFromCart(req.query.username, req.query.product_id);
-        console.log(results);
+        // console.log(results);
         res.send(results);
     }catch(e){
         console.log(e);
@@ -182,15 +182,12 @@ router.get('/loggedIn', async (req, res, next) => {
     res.sendFile('server/views/loggedIn.html', {root: '.'});
 });
 
-router.post('/pleaseWork', async (req, res, next) => {
+router.get('/login', async (req, res, next) => {
     
     console.log(req.query.uname);
     console.log(req.query.psw);
-    console.log(req.query.admin);
-    console.log(req.query.addr);
 
     let results;
-    if(req.query.addr == null){
         try{
             results = await db.login(req.query.uname, req.query.psw);
             res.json(results);
@@ -200,18 +197,24 @@ router.post('/pleaseWork', async (req, res, next) => {
             console.log(e.sqlMessage);
             res.send(e);
         }
-    }
-    else{
+});
+
+router.post('/pleaseWork', async (req, res, next) => {
+    
+    console.log(req.query.uname);
+    console.log(req.query.psw);
+    console.log(req.query.admin);
+    console.log(req.query.addr);
+
+    let results;
         try{
             results = await db.addUser(req.query.uname, req.query.psw, req.query.admin, req.query.addr);
-            // res.json(results);
             res.send(results);
             console.log('user added');
             // console.log(results);
         }catch(e){
             console.log(e);
         }
-    }
 });
 
 
