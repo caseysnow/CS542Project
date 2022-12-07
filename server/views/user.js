@@ -12,27 +12,18 @@ $(document).ready(function () {
           integrate(response);        
       },
       error: function(textStatus, errorThrown) { 
-        alert(errorThrown);
-        alert(textStatus);
+        // alert(errorThrown);
+        // alert(textStatus);
         alert("Username does not exist or password doesn't match. Please try again"); 
         location.href = "/";
     }
   });
   
   function integrate(data){
+    console.log(data);
       var element = document.getElementById('welcomeMat');
       element.innerHTML = 'Welcome ' + data.username;
       localStorage.username = data.username;
-      addCart(data.username);
-  }
-  function addCart(username){
-    $.ajax({
-      method:'POST',
-      url:'http://127.0.0.1:3000/newCart/' + username,
-      success:function(response){      
-        console.log('cartAdded'); 
-      }
-  });
   }
 });
 

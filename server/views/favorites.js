@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    if(localStorage.getItem("username")==null){
+        alert("Not logged in. Please try agian")
+        location.href = "/";
+    }
     document.getElementById("favButton").addEventListener("click", (e) => {
         const queryString = window.location.search;
             console.log("favorites");

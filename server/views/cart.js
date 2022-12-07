@@ -1,6 +1,8 @@
 $(document).ready(function () {
-    // tryingToReach();
-    // const auth = new Auth();
+    if(localStorage.getItem("username")==null){
+        alert("Not logged in. Please try agian")
+        location.href = "/";
+    }
     const username = localStorage.getItem("username");
     console.log(username);
 
@@ -27,17 +29,17 @@ $(document).ready(function () {
     function integrate(data){
         console.log(data);
         var table = document.getElementById('cartTable');
-        // for(i = 0; i < data.length; i ++){
+        for(i = 0; i < data.length; i ++){
             var row = table.insertRow(1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
-            // cell1.innerHTML = data[i].username;
-            // cell2.innerHTML = data[i].quantity;
-            // cell3.innerHTML = data[i].price;
-            cell1.innerHTML = data.item_id;
-            cell2.innerHTML = data.quantity;
-            cell3.innerHTML = data.price;
-        // }
+            cell1.innerHTML = data[i].title;
+            cell2.innerHTML = data[i].quantity;
+            cell3.innerHTML = data[i].price;
+            // cell1.innerHTML = data.item;
+            // cell2.innerHTML = data.quantity;
+            // cell3.innerHTML = data.price;
+        }
     }
   });

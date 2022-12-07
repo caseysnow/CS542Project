@@ -132,7 +132,7 @@ router.post('/addToCart', async (req, res, next) => {
     console.log("in here");
     console.log(req.query.id)
     try{
-        results = await db.addToCart(req.query.username, req.query.id);
+        results = await db.addToCart(req.query.username, 1, req.query.id);
         res.send(results);
     }catch(e){
         console.log(e);

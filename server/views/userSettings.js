@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    if(localStorage.getItem("username")==null){
+        alert("Not logged in. Please try agian")
+        location.href = "/";
+    }
     $.ajax({
         method:'GET',
         url:'http://127.0.0.1:3000/userFavorites/' + localStorage.getItem('username'),
