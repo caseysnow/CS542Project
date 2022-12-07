@@ -128,6 +128,18 @@ store.addFavorite = (username, productID) => {
     });
 };
 
+store.addReview = (username, productID, numStars, review) => {
+    console.log(numStars);
+    return new Promise((resolve, reject) => {
+        pool.query('INSERT INTO CustomerReview (username, product_id, num_stars, description) VALUES(?, ?, ?, ?)', [username, productID, parseInt(numStars), review], (err, results) => {
+            if(err){
+                return reject(err);
+            }
+            return resolve(results[0]);
+        });
+    });
+};
+
 store.addToCart = (username, productID) => {
     return new Promise((resolve, reject) => {
         pool.query('INSERT INTO Cart (username, item) VALUES(?, ?)', [username, productID], (err, results) => {

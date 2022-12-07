@@ -115,6 +115,18 @@ router.post('/favoriteAdded', async (req, res, next) => {
     }
 });
 
+router.post('/reviewLeft', async (req, res, next) => {
+    let results;
+    console.log(req.query.stars);
+    try{
+        results = await db.addReview(req.query.username, req.query.id, req.query.stars, req.query.review);
+        res.send(results);
+    }catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
 router.post('/addToCart', async (req, res, next) => {
     let results;
     console.log("in here");
