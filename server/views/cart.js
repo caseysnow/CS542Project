@@ -37,9 +37,37 @@ $(document).ready(function () {
             cell1.innerHTML = data[i].title;
             cell2.innerHTML = data[i].quantity;
             cell3.innerHTML = data[i].price;
-            // cell1.innerHTML = data.item;
-            // cell2.innerHTML = data.quantity;
-            // cell3.innerHTML = data.price;
         }
+        addRowHandlers();
     }
+
+    function addRowHandlers() {
+        var table = document.getElementById("cartTable");
+        var rows = table.getElementsByTagName("tr");
+        for (i = 0; i < rows.length; i++) {
+          var currentRow = table.rows[i];
+          var createClickHandler = function(row) {
+            return function() {
+              var cell = row.getElementsByTagName("td")[2];
+              var id = cell.innerHTML;
+              $.ajax({
+                method:'DELETE',
+                url:'http://127.0.0.1:3000/deleteFromCart/' + "?username=" +username + "&product_id="+id,
+                success:function(response){
+                    console.log(response);
+                    alert("Item removed from cart");
+                    window.location.reload();
+
+                },
+                error: function(textStatus, errorThrown) { 
+                    alert("There are no items in your cart"); 
+                    
+                }
+                
+            });
+            };
+          };
+          currentRow.onclick = createClickHandler(currentRow);
+        }
+      }
   });
