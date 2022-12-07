@@ -145,7 +145,7 @@ router.post('/deleteFromCart', async (req, res, next) => {
     console.log(req.query.id)
     try{
         results = await db.removeFromCart(req.query.username, req.query.product_id);
-        // console.log(results);
+        console.log(results);
         res.send(results);
     }catch(e){
         console.log(e);

@@ -28,9 +28,11 @@ $(document).ready(function () {
         var table = document.getElementById('cartTable');
         for(i = 0; i < data.length; i ++){
             var row = table.insertRow(1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
+            var cell0 = row.insertCell(0)
+            var cell1 = row.insertCell(1);
+            var cell2 = row.insertCell(2);
+            var cell3 = row.insertCell(3);
+            cell0.innerHTML = data[i].product_id;
             cell1.innerHTML = data[i].title;
             cell2.innerHTML = data[i].quantity;
             cell3.innerHTML = data[i].price;
@@ -45,7 +47,10 @@ $(document).ready(function () {
           var currentRow = table.rows[i];
           var createClickHandler = function(row) {
             return function() {
-              var cell = row.getElementsByTagName("td")[2];
+              var cell = row.getElementsByTagName("td")[0];
+              //print content in cell
+                console.log(cell.innerHTML);
+              //get the product id without innerHTML
               var id = cell.innerHTML;
               $.ajax({
                 method:'POST',

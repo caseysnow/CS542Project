@@ -75,8 +75,9 @@ store.cart = (username) => {
 store.removeFromCart = (username, productID) => {
     return new Promise((resolve, reject) => {
         // DELETE FROM `ApplianceStore`.`Cart` WHERE (`username` = 'casey') and (`cart_id` = '') and (`item` = '11605');
-        pool.query('DELETE FROM Cart WHERE (username = ?) and (cart_id = ?)and (item = ?)', [username, "", productID], (err, results) => {
+        pool.query('DELETE FROM Cart WHERE username = ? and item = ?', [username, productID], (err, results) => {
             if(err){
+                console.log(err)
                 return reject(err);
             }
             return resolve(results);
