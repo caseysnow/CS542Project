@@ -15,7 +15,7 @@ $(document).ready(function () {
         integrateProduct(response1[0]);
         integrateReview(response2[0]);
     }).fail(function(err) {
-        console.log('Something went wrong', err);
+        console.log('AHHHH went wrong', err);
     });
     
     function integrateProduct(data){

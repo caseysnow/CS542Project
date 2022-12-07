@@ -19,11 +19,13 @@ $(document).ready(function () {
     }
   });
   
+  
   function integrate(data){
     console.log(data);
       var element = document.getElementById('welcomeMat');
       element.innerHTML = 'Welcome ' + data.username;
       localStorage.username = data.username;
+      console.log(localStorage.username);
   }
 });
 

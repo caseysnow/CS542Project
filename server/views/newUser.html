@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="login_prompt_section">
-        <form action="/loggedIn" href="loggedIn" class="login__form">
+        <form action="/" href = "/" class="login__form">
 
         <div class="container">
             <label class="login_prompts" for="uname"><b>Username</b></label>
@@ -49,9 +49,8 @@
             <input type="text" placeholder="Where is your address?" name="addr" required id="create_address">
             <span class = "error-message"></span>
                 
-            <button id="submitButton">Login</button>
+            <button id="submitButton" onclick="onSubmit()">Login</button>
             <label class="login_prompts">
-            <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
         </div>
 
