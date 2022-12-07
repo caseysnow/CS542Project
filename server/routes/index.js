@@ -48,10 +48,10 @@ router.get('/userReviews/:username', async (req, res, next) => {
 
 router.get('/productquery/', async (req, res, next) => {
     let results;
-    try{
-        results = await db.product(req.query.id);
-        // res.sendFile('server/views/product.html', {root: '.'});
-        res.json(results);
+    try{
+        results = await db.product(req.query.id);
+        // res.sendFile('server/views/product.html', {root: '.'});
+        res.json(results);
     }catch(e){
         console.log(e);
     res.sendStatus(500);
