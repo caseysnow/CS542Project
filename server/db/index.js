@@ -85,19 +85,6 @@ store.removeFromCart = (username, productID) => {
     });
 };
 
-// store.createCart = (username) => {
-//     return new Promise((resolve, reject) => {
-        
-//         pool.query('INSERT INTO Cart (cart_id, username) VALUES(?, ?)', [username, cart_id], (err, results) => {
-//             if(err){
-//                 return reject(err);
-//             }
-//             return resolve(results[0]);
-
-//         });
-//     });
-// };
-
 store.product = (productID) => {
     return new Promise((resolve, reject) => {
         pool.query('SELECT * FROM Product WHERE product_id = ?', [productID], (err, results) => {
@@ -122,16 +109,16 @@ store.productByCat = (category) => {
     });
 };
 
-store.customerReview = (username, productID) => {
-    return new Promise((resolve, reject) => {
-        pool.query('SELECT num_stars, description FROM CustomerReview WHERE username = ? and product_id = ?', [productID, username], (err, results) => {
-            if(err){
-                return reject(err);
-            }
-            return resolve(results[0]);
-        });
-    });
-};
+// store.customerReview = (username, productID) => {
+//     return new Promise((resolve, reject) => {
+//         pool.query('SELECT num_stars, description FROM CustomerReview WHERE username = ? and product_id = ?', [productID, username], (err, results) => {
+//             if(err){
+//                 return reject(err);
+//             }
+//             return resolve(results[0]);
+//         });
+//     });
+// };
 
 store.addFavorite = (username, productID) => {
     return new Promise((resolve, reject) => {
@@ -186,6 +173,18 @@ store.reviewsList = (username) => {
                 return reject(err);
             }
             console.log(results);
+            return resolve(results);
+        });
+    });
+};
+
+
+store.customerReview = (productID) => {
+    return new Promise((resolve, reject) => {
+        pool.query('SELECT num_stars, description FROM CustomerReview WHERE product_id = ?', [productID], (err, results) => {
+            if(err){
+                return reject(err);
+            }
             return resolve(results);
         });
     });
