@@ -140,6 +140,19 @@ router.post('/addToCart', async (req, res, next) => {
     }
 });
 
+router.delete('/deleteFromCart', async (req, res, next) => {
+    let results;
+    console.log(req.query.id)
+    try{
+        results = await db.removeFromCart(req.query.username, req.query.product_id);
+        console.log(results);
+        res.send(results);
+    }catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
 router.get('/searchRes', async (req, res, next) => {
     console.log(req.query.searchInput);
     let results;
