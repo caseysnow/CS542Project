@@ -38,6 +38,7 @@ $(document).ready(function () {
                     url:'http://127.0.0.1:3000/reviewLeft/' + queryString + "&username=" + localStorage.getItem("username") + "&stars=" + starCount.value + "&review=" + input.value,
                     success:function(response){
                         alert("Added review");
+                        window.location.reload();
                     },
                 });
             });
